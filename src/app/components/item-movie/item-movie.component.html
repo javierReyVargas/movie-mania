@@ -1,1 +1,17 @@
-<p>item-movie works!</p>
+<mat-card class="container">
+  <span *ngIf="onWatchList" class="label-on-whatchlist">
+    On my watchlist
+  </span>
+  <img mat-card-image [src]="urlImage" [alt]="title">
+  <mat-card-actions>
+    <span>
+      {{title}}
+    </span>
+    <button *ngIf="!onWatchList" mat-stroked-button color="primary">Add to Whatchlist +</button>
+  </mat-card-actions>
+  <mat-card-content>
+    <p>
+      {{description}}
+    </p>
+  </mat-card-content>
+</mat-card>

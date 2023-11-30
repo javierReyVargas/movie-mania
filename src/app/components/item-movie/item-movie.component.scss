@@ -1,0 +1,36 @@
+.container {
+  margin: 10px;
+  padding: 5px;
+  max-width: 353px;
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 200;
+  & .label-on-whatchlist {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 1;
+    background-color: red;
+    color: white;
+  }
+  & img {
+    max-height: 460px;
+  }
+  & mat-card-actions {
+    justify-content: space-between;
+    & span, button {
+      flex: 1;
+    }
+    & button{
+      z-index: 0;
+    }
+  }
+  & mat-card-content {
+    & p {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
