@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(101,7,14,1) 29%, rgba(121,9,9,1) 35%, rgba(115,18,20,1) 38%, rgba(104,37,43,1) 44%, rgba(89,62,73,1) 52%, rgba(96,114,117,1) 100%);
+}
