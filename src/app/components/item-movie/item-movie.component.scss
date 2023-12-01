@@ -5,6 +5,7 @@
   display: flex;
   flex-grow: 1;
   flex-basis: 200;
+  cursor: pointer;
   & .label-on-whatchlist {
     position: absolute;
     top: 5px;

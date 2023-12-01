@@ -6,7 +6,7 @@ import { NgIf } from '@angular/common';
 @Component({
   selector: 'item-movie',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, NgIf],
+  imports: [MatCardModule, MatButtonModule],
   templateUrl: './item-movie.component.html',
   styleUrl: './item-movie.component.scss',
 })

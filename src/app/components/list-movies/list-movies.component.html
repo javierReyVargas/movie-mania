@@ -1,9 +1,12 @@
+<sort></sort>
+
 <section class="container">
-  <div *ngFor="let movie of (moviesService$ | async)">
-    <item-movie [onWatchList]="movie.onWatchList"
+
+    @for (movie of moviesService$ | async; track $index) {
+      <item-movie [onWatchList]="movie.onWatchList"
                 [title]="movie.title"
                 [urlImage]="movie.urlImage"
                 [description]="movie.description"></item-movie>
-  </div>
+    }
 </section>
 
