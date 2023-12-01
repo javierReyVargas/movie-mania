@@ -1,0 +1,26 @@
+<section class="container-filter">
+  <span>
+    Sort by :
+  </span>
+  <div class="filters">
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <mat-select>
+        @for (field of fields; track $index) {
+          <mat-option [value]="field.value">
+            {{field.name}}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Order</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let field of arrOrder" [value]="field">
+          {{field}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</section>
