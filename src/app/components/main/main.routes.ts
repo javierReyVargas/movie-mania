@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './main.component';
 import { ListMoviesComponent } from '../list-movies/list-movies.component';
+import { DetailMovieComponent } from '../detail-movie/detail-movie.component';
 
 export const MAIN_ROUTES: Routes = [
   {
@@ -10,6 +11,10 @@ export const MAIN_ROUTES: Routes = [
       {
         path: '',
         component: ListMoviesComponent,
+      },
+      {
+        path: 'detail',
+        component: DetailMovieComponent,
       },
     ],
   },

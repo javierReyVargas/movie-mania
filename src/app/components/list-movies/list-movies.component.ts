@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { IMovie } from '../data/movie.model';
 import { SortComponent } from '../filter/sort.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-movies',
@@ -17,11 +18,12 @@ import { SortComponent } from '../filter/sort.component';
 })
 export class ListMoviesComponent {
   moviesService = inject(MoviesService);
+  router = inject(Router);
+
   moviesService$: Observable<IMovie[]> = this.moviesService.getListMovies();
   onGoToDetail(movie: IMovie) {
-    console.log('Moviee:: ', movie);
+    this.router.navigate(['detail'], { queryParams: { id: movie.id } });
   }
-
   onAddToWhatchList(movieToAdd: IMovie) {
     this.moviesService.addMovieToWatchList(movieToAdd);
   }
