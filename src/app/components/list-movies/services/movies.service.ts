@@ -40,7 +40,28 @@ export class MoviesService {
     localStorage.setItem('movies', JSON.stringify(movies));
   }
 
+  removeMovieToWatchList(movie: IMovie) {
+    movie.onWatchList = false;
+    const currentList = this.getMoviesFromLocalStorage() || '[]';
+    const movies = JSON.parse(currentList);
+    movies.splice(movies.indexOf(movie), 1);
+    localStorage.setItem('movies', JSON.stringify(movies));
+  }
+
   private getMoviesFromLocalStorage() {
     return localStorage.getItem('movies');
+  }
+
+  getMovieById(id: number): Observable<IMovie> {
+    return this.getListMovies().pipe(
+      map((movies: IMovie[]) => {
+        return (
+          movies.find((movie: IMovie) => {
+            console.log(movie.id, id);
+            return movie.id === id;
+          }) ?? ({} as IMovie)
+        );
+      })
+    );
   }
 }
