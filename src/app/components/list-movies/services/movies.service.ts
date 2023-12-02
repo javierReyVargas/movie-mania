@@ -57,7 +57,6 @@ export class MoviesService {
       map((movies: IMovie[]) => {
         return (
           movies.find((movie: IMovie) => {
-            console.log(movie.id, id);
             return movie.id === id;
           }) ?? ({} as IMovie)
         );

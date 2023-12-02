@@ -1,5 +1,5 @@
-<sort></sort>
-
+<sort (changeTitle)="onOrderBy($event)"
+  (changeOrder)="onChangeOrder($event)"></sort>
 <section class="container">
 
     @for (movie of moviesService$ | async; track $index) {
