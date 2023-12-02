@@ -16,5 +16,13 @@ import { SortComponent } from '../filter/sort.component';
   styleUrl: './list-movies.component.scss',
 })
 export class ListMoviesComponent {
-  moviesService$: Observable<IMovie[]> = inject(MoviesService).getListMovies();
+  moviesService = inject(MoviesService);
+  moviesService$: Observable<IMovie[]> = this.moviesService.getListMovies();
+  onGoToDetail(movie: IMovie) {
+    console.log('Moviee:: ', movie);
+  }
+
+  onAddToWhatchList(movieToAdd: IMovie) {
+    this.moviesService.addMovieToWatchList(movieToAdd);
+  }
 }

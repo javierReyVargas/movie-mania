@@ -1,21 +1,23 @@
 <mat-card class="container">
-  @if (onWatchList) {
+  @if (movie.onWatchList) {
     <span class="label-on-whatchlist">
       On my watchlist
     </span>
   }
-  <img mat-card-image [src]="urlImage" [alt]="title">
+  <img mat-card-image [src]="movie.urlImage" [alt]="movie.title" (click)="onGoToDetail()">
   <mat-card-actions>
-    <span>
-      {{title}}
+    <span (click)="onGoToDetail()">
+      {{movie.title}}
     </span>
-    @if (!onWatchList) {
-      <button mat-stroked-button color="primary">+ Add to Whatchlist</button>
+    @if (!movie.onWatchList) {
+      <button mat-stroked-button
+              color="primary"
+              (click)="onAddToWhatchList()">+ Add to Whatchlist</button>
     }
   </mat-card-actions>
-  <mat-card-content>
+  <mat-card-content (click)="onGoToDetail()">
     <p>
-      {{description}}
+      {{movie.description}}
     </p>
   </mat-card-content>
 </mat-card>

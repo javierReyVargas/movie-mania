@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf } from '@angular/common';
+import { IMovie } from '../data/movie.model';
 
 @Component({
   selector: 'item-movie',
@@ -11,8 +11,14 @@ import { NgIf } from '@angular/common';
   styleUrl: './item-movie.component.scss',
 })
 export class ItemMovieComponent {
-  @Input() onWatchList: boolean = false;
-  @Input() urlImage!: string;
-  @Input() title: string = '';
-  @Input() description: string = '';
+  @Input() movie!: IMovie;
+  @Output() goToDetail = new EventEmitter();
+  @Output() addToWatchList = new EventEmitter();
+
+  onAddToWhatchList() {
+    this.addToWatchList.emit(this.movie);
+  }
+  onGoToDetail() {
+    this.goToDetail.emit(this.movie);
+  }
 }

@@ -3,10 +3,9 @@
 <section class="container">
 
     @for (movie of moviesService$ | async; track $index) {
-      <item-movie [onWatchList]="movie.onWatchList"
-                [title]="movie.title"
-                [urlImage]="movie.urlImage"
-                [description]="movie.description"></item-movie>
+      <item-movie [movie]="movie"
+                  (goToDetail)="onGoToDetail($event)"
+                  (addToWatchList)="onAddToWhatchList($event)"></item-movie>
     }
 </section>
 
