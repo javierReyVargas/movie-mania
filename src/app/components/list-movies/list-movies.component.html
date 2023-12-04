@@ -1,6 +1,6 @@
 <div class="Watchlist">
   @if (moviesService.numberOfMovies$ | async) {
-      <button mat-stroked-button color="accent">
+      <button mat-stroked-button routerLink="/watchlist" color="accent">
         My Watchlist
       </button>
   }
@@ -8,7 +8,6 @@
 <sort (changeTitle)="onOrderBy($event)"
   (changeOrder)="onChangeOrder($event)"></sort>
 <section class="container">
-
     @for (movie of moviesService$ | async; track $index) {
       <item-movie [movie]="movie"
                   (goToDetail)="onGoToDetail($event)"

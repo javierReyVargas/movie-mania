@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { IMovie } from '../data/movie.model';
 import { SortComponent } from '../sort/sort.component';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
     SortComponent,
     CommonModule,
     MatButtonModule,
+    RouterLink,
   ],
   providers: [MoviesService],
   templateUrl: './list-movies.component.html',
