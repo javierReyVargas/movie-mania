@@ -49,7 +49,10 @@ export class MoviesService {
     movie.onWatchList = false;
     const currentList = this.getMoviesFromLocalStorage() || '[]';
     const movies = JSON.parse(currentList);
-    movies.splice(movies.indexOf(movie), 1);
+    movies.splice(
+      [...movies.map((movie: IMovie) => movie.id)].indexOf(movie.id),
+      1
+    );
     this.numMovies.next(movies.length);
     localStorage.setItem('movies', JSON.stringify(movies));
   }
