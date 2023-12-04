@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './main.component';
-import { ListMoviesComponent } from '../list-movies/list-movies.component';
-import { DetailMovieComponent } from '../detail-movie/detail-movie.component';
-import { WatchListComponent } from '../watch-list/watch-list.component';
 
 export const MAIN_ROUTES: Routes = [
   {
@@ -11,15 +8,24 @@ export const MAIN_ROUTES: Routes = [
     children: [
       {
         path: '',
-        component: ListMoviesComponent,
+        loadComponent: () =>
+          import('../list-movies/list-movies.component').then(
+            (m) => m.ListMoviesComponent
+          ),
       },
       {
         path: 'detail',
-        component: DetailMovieComponent,
+        loadComponent: () =>
+          import('../detail-movie/detail-movie.component').then(
+            (m) => m.DetailMovieComponent
+          ),
       },
       {
         path: 'watchlist',
-        component: WatchListComponent,
+        loadComponent: () =>
+          import('../watch-list/watch-list.component').then(
+            (m) => m.WatchListComponent
+          ),
       },
     ],
   },
