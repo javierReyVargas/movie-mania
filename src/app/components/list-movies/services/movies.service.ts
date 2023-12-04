@@ -69,4 +69,12 @@ export class MoviesService {
       })
     );
   }
+
+  getWatchList(): Observable<IMovie[]> {
+    return this.getListMovies().pipe(
+      map((movies: IMovie[]) =>
+        movies.filter((movie: IMovie) => movie.onWatchList)
+      )
+    );
+  }
 }
