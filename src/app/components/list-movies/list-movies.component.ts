@@ -7,11 +7,18 @@ import { CommonModule } from '@angular/common';
 import { IMovie } from '../data/movie.model';
 import { SortComponent } from '../sort/sort.component';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-list-movies',
   standalone: true,
-  imports: [ItemMovieComponent, HttpClientModule, SortComponent, CommonModule],
+  imports: [
+    ItemMovieComponent,
+    HttpClientModule,
+    SortComponent,
+    CommonModule,
+    MatButtonModule,
+  ],
   providers: [MoviesService],
   templateUrl: './list-movies.component.html',
   styleUrl: './list-movies.component.scss',
@@ -29,7 +36,7 @@ export class ListMoviesComponent {
   onAddToWhatchList(movieToAdd: IMovie) {
     this.moviesService.addMovieToWatchList(movieToAdd);
   }
-  onOrderBy(field: keyof IMovie = 'title', order: 1 | -1 = 1) {
+  onOrderBy(field: keyof IMovie = 'title', order: 1 | -1 = this.initialOrder) {
     this.initialFieldOrder = field;
     this.moviesService$ = this.moviesService
       .getListMovies()

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { IMovie } from '../data/movie.model';
-import { MoviesService } from '../list-movies/services/movies.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
@@ -8,6 +7,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { RouterLink } from '@angular/router';
+import { MoviesService } from '../list-movies/services/movies.service';
 
 @Component({
   selector: 'app-detail-movie',
@@ -43,7 +43,6 @@ export class DetailMovieComponent implements OnInit {
     );
   }
   onChangeWatchList(event: any, movie: IMovie) {
-    console.log(event.checked);
     event.checked
       ? this.movieService.addMovieToWatchList(movie)
       : this.movieService.removeMovieToWatchList(movie);

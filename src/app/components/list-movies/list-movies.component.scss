@@ -1,3 +1,12 @@
+ .Watchlist {
+  width: 100%;
+  text-align: right;
+  position: fixed;
+  z-index: 2;
+  & button {
+    background-color: white;
+  }
+ }
 .container {
   display: flex;
   flex-wrap: wrap;
