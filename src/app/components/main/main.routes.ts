@@ -16,6 +16,7 @@ export const MAIN_ROUTES: Routes = [
       },
       {
         path: 'detail',
+        title: 'movie detail',
         loadComponent: () =>
           import('../detail-movie/detail-movie.component').then(
             (m) => m.DetailMovieComponent
