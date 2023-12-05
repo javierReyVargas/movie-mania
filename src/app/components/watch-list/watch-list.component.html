@@ -1,0 +1,28 @@
+<section class="container">
+  @if ((watchList$ | async)?.length == 0) {
+    <mat-card class="card-empty">
+      <mat-card-content>
+        <p>
+          Watchlist is empty
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button
+                color="warn"
+                routerLink="/">
+          Comeback to the main list
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  } @else {
+    @for (item of watchList$ | async; track $index) {
+      <item-movie [movie]="item" (goToDetail)="onGoToDetail($event)"></item-movie>
+    }
+    <button mat-fab
+            color="warn"
+            routerLink="/"
+            class="btn-back">
+        <
+    </button>
+  }
+</section>
