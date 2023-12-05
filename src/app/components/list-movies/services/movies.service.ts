@@ -10,7 +10,7 @@ export class MoviesService {
   private numMovies: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   numberOfMovies$ = this.numMovies.asObservable();
 
-  url = '../../../../assets/movies.json';
+  url = 'assets/movies.json';
   constructor(private http: HttpClient) {}
 
   getListMovies(): Observable<IMovie[]> {
