@@ -8,6 +8,7 @@ export const MAIN_ROUTES: Routes = [
     children: [
       {
         path: '',
+        title: 'movie list',
         loadComponent: () =>
           import('../list-movies/list-movies.component').then(
             (m) => m.ListMoviesComponent
