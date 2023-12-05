@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { IMovie } from '../data/movie.model';
+import { IMovie } from '../../data/movie.model';
 
 @Component({
   selector: 'item-movie',

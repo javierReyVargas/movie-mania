@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
-import { IMovie } from '../../data/movie.model';
+import { IMovie } from '../../../data/movie.model';
 
 @Injectable({
   providedIn: 'root',

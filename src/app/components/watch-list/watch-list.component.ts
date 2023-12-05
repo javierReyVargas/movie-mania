@@ -3,7 +3,7 @@ import { MoviesService } from '../list-movies/services/movies.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { IMovie } from '../data/movie.model';
+import { IMovie } from '../../data/movie.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';

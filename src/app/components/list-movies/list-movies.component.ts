@@ -4,7 +4,7 @@ import { MoviesService } from './services/movies.service';
 import { Observable, map } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { IMovie } from '../data/movie.model';
+import { IMovie } from '../../data/movie.model';
 import { SortComponent } from '../sort/sort.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';

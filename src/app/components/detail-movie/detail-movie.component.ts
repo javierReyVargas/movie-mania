@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { IMovie } from '../data/movie.model';
+import { IMovie } from '../../data/movie.model';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
