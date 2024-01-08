@@ -1,9 +1,9 @@
-@if ((movieDetail$ | async); as movieDetail) {
+@if (movieDetail()) {
   <section class="container">
     <section class="trailer">
       <iframe width="100%"
               height="100%"
-              [src]="movieDetail.trailer"
+              [src]="getSafeUrl(movieDetail()?.trailer)"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -11,8 +11,8 @@
       </iframe>
     </section>
     <section class="actions">
-      <mat-slide-toggle [checked]="movieDetail.onWatchList"
-                        (change)="onChangeWatchList($event,movieDetail)"
+      <mat-slide-toggle [checked]="movieDetail()?.onWatchList"
+                        (change)="onChangeWatchList($event, movieDetail()!)"
                         labelPosition="before">
           on Whatchlist
       </mat-slide-toggle>
@@ -31,30 +31,30 @@
             <strong>
               Title:
             </strong>
-            {{movieDetail.title}}
+            {{movieDetail()?.title}}
           </span>
           <span>
             <strong>
               Rating:
             </strong>
-            {{movieDetail.rating}}</span>
+            {{movieDetail()?.rating}}</span>
           <span>
             <strong>
               Genere:
             </strong>
-            {{movieDetail.genre}}</span>
+            {{movieDetail()?.genre}}</span>
         </div>
         <div>
           <span>
             <strong>
               Released:
             </strong>
-            {{movieDetail.released_date}}</span>
+            {{movieDetail()?.released_date}}</span>
           <span>
             <strong>
               Duration:
             </strong>
-            {{movieDetail.duration}}</span>
+            {{movieDetail()?.duration}}</span>
         </div>
       </div>
 
@@ -64,7 +64,7 @@
             Description:
           </strong>
         </span>
-        <span>{{movieDetail.description}}</span>
+        <span>{{movieDetail()?.description}}</span>
       </div>
 
     </section>
