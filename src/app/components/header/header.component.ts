@@ -14,5 +14,5 @@ import { MatBadgeModule } from '@angular/material/badge';
 })
 export class HeaderComponent {
   moviesService = inject(MoviesService);
-  totalMovies = computed(() => this.moviesService.numberOfMovies());
+  totalMovies = computed(() => this.moviesService.numberOfMoviesInWatchList());
 }
