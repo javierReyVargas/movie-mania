@@ -12,4 +12,16 @@
     </span>
     <span class="title">Movie Mania</span>
   </div>
+  <div class="Watchlist">
+    @if (totalMovies() > 0) {
+        <button mat-stroked-button
+                routerLink="/watchlist"
+                color="accent"
+                [matBadge]="totalMovies()"
+                matBadgePosition="before"
+                matBadgeColor="accent">
+          My Watchlist
+        </button>
+    }
+  </div>
 </mat-toolbar>

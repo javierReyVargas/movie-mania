@@ -1,10 +1,3 @@
-<div class="Watchlist">
-  @if (moviesService.numberOfMovies$ | async) {
-      <button mat-stroked-button routerLink="/watchlist" color="accent">
-        My Watchlist
-      </button>
-  }
-</div>
 <sort (changeTitle)="onOrderBy($event)"
   (changeOrder)="onChangeOrder($event)"></sort>
 <section class="container">

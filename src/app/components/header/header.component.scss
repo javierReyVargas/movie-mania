@@ -9,4 +9,11 @@
       justify-content: center;
     }
   }
+
+  & .Watchlist {
+    z-index: 2;
+    & button {
+      background-color: white;
+    }
+   }
 }

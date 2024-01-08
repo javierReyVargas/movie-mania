@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, map } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
+import { Observable, map } from 'rxjs';
 import { IMovie } from '../../../data/movie.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MoviesService {
-  private numMovies: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  numberOfMovies$ = this.numMovies.asObservable();
-
+  numberOfMovies = signal(0);
   url = 'assets/movies.json';
   constructor(private http: HttpClient) {}
 
@@ -20,7 +18,7 @@ export class MoviesService {
           const localList = JSON.parse(
             this.getMoviesFromLocalStorage() || '[]'
           );
-          this.numMovies.next(localList.length);
+          this.numberOfMovies.set(localList.length);
           return {
             ...response,
             onWatchList: localList.find(
@@ -41,7 +39,7 @@ export class MoviesService {
     const currentList = this.getMoviesFromLocalStorage() || '[]';
     const movies = JSON.parse(currentList);
     movies.push(movie);
-    this.numMovies.next(movies.length);
+    this.numberOfMovies.update(() => movies.length);
     localStorage.setItem('movies', JSON.stringify(movies));
   }
 
@@ -53,7 +51,7 @@ export class MoviesService {
       [...movies.map((movie: IMovie) => movie.id)].indexOf(movie.id),
       1
     );
-    this.numMovies.next(movies.length);
+    this.numberOfMovies.update(() => movies.length);
     localStorage.setItem('movies', JSON.stringify(movies));
   }
 
