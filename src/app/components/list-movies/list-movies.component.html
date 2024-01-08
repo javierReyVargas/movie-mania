@@ -1,7 +1,7 @@
 <sort (changeTitle)="onOrderBy($event)"
   (changeOrder)="onChangeOrder($event)"></sort>
 <section class="container">
-    @for (movie of moviesService$ | async; track $index) {
+    @for (movie of arrAllMovies(); track $index) {
       <item-movie [movie]="movie"
                   (goToDetail)="onGoToDetail($event)"
                   (addToWatchList)="onAddToWhatchList($event)"></item-movie>
