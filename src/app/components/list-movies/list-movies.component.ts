@@ -1,7 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { ItemMovieComponent } from '../item-movie/item-movie.component';
 import { MoviesService } from './services/movies.service';
-import { Observable, map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { IMovie } from '../../data/movie.model';
 import { SortComponent } from '../sort/sort.component';

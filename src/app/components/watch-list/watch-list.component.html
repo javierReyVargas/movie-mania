@@ -1,5 +1,5 @@
 <section class="container">
-  @if ((watchList$ | async)?.length == 0) {
+  @if (watchList().length == 0) {
     <mat-card class="card-empty">
       <mat-card-content>
         <p>
@@ -15,7 +15,7 @@
       </mat-card-actions>
     </mat-card>
   } @else {
-    @for (item of watchList$ | async; track $index) {
+    @for (item of watchList(); track $index) {
       <item-movie [movie]="item" (goToDetail)="onGoToDetail($event)"></item-movie>
     }
     <button mat-fab
