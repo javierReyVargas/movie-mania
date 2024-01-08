@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, computed, inject, signal } from '@angular/core';
 import { IMovie } from '../../data/movie.model';
 import { CommonModule } from '@angular/common';
-import { Observable, map } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -15,24 +14,29 @@ import { MoviesService } from '../list-movies/services/movies.service';
   templateUrl: './detail-movie.component.html',
   styleUrl: './detail-movie.component.scss',
 })
-export class DetailMovieComponent implements OnInit {
-  @Input() id!: number;
-  movieService = inject(MoviesService);
-  movieDetail$!: Observable<IMovie>;
+export class DetailMovieComponent {
   sanitizer: DomSanitizer = inject(DomSanitizer);
+  @Input() set id(id: string) {
+    this.idMovie.set(+id);
+  }
+  idMovie = signal(0);
+  movieDetail = computed(
+    () =>
+      this.movieService.arrMovies()?.filter((movie) => {
+        return movie.id == this.idMovie()
+          ? {
+              ...movie,
+              trailer: this.sanitizer.bypassSecurityTrustResourceUrl(
+                movie.trailer
+              ) as string,
+            }
+          : null;
+      })[0]
+  );
+  movieService = inject(MoviesService);
 
-  ngOnInit(): void {
-    this.movieDetail$ = this.movieService.getMovieById(+this.id).pipe(
-      map((movie: IMovie) => {
-        console.log(movie.trailer as string);
-        return {
-          ...movie,
-          trailer: this.sanitizer.bypassSecurityTrustResourceUrl(
-            movie.trailer
-          ) as string,
-        };
-      })
-    );
+  getSafeUrl(url: string = '') {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
   onChangeWatchList(event: any, movie: IMovie) {
     event.checked
