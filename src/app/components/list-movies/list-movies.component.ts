@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { ItemMovieComponent } from '../item-movie/item-movie.component';
 import { MoviesService } from './services/movies.service';
 import { Observable, map } from 'rxjs';
-import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { IMovie } from '../../data/movie.model';
 import { SortComponent } from '../sort/sort.component';
@@ -14,13 +13,11 @@ import { MatButtonModule } from '@angular/material/button';
   standalone: true,
   imports: [
     ItemMovieComponent,
-    HttpClientModule,
     SortComponent,
     CommonModule,
     MatButtonModule,
     RouterLink,
   ],
-  providers: [MoviesService],
   templateUrl: './list-movies.component.html',
   styleUrl: './list-movies.component.scss',
 })
